@@ -1,3 +1,10 @@
+<?php 
+
+function salam() {
+    return "Selamat datang";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +15,7 @@
 </head>
 <body>
     
-<h1> Selamat datang, administor </h1>
+<h1> <?= salam() ?> </h1>
 
 </body>
 </html>
