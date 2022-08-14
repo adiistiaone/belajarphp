@@ -1,7 +1,7 @@
 <?php 
 
-function salam() {
-    return "Selamat datang";
+function salam($waktu = "Datang", $nama = "Admin") {
+    return "Selamat $waktu, $nama";
 }
 ?>
 
@@ -15,7 +15,7 @@ function salam() {
 </head>
 <body>
     
-<h1> <?= salam() ?> </h1>
+<h1> <?= salam("Pagi", "Galih") ?> </h1>
 
 </body>
 </html>
