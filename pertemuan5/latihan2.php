@@ -14,7 +14,7 @@ $angka = [1,2,3,4,5,6,7];
     <title>Latihan 2</title>
     <style>
 
-        div {
+        .kotak {
             width: 50px;
             height: 50px;
             background-color: salmon;
@@ -30,12 +30,14 @@ $angka = [1,2,3,4,5,6,7];
 <body>
 
 <?php for ($i = 0; $i < count($angka); $i++) { ?>
-    <div><?= $angka[$i]; ?></div>
+    <div class="kotak"><?= $angka[$i]; ?></div>
 <?php } ?>
 
 <div class="clear"></div>
 
-
+<?php foreach ( $angka as $a ) : ?>
+    <div class="kotak"><?= $a ?></div>
+<?php endforeach; ?>
 
 </body>
 </html>
