@@ -1,10 +1,9 @@
 <?php
 require 'functions.php';
-
-$mahasiswa = query("SELECT * FROM mahasiswa");
+// $buku = query("SELECT * FROM buku");
+$tes = mysqli_query($conn, "SELECT * FROM buku");
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,45 +14,41 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
     <title>Halaman Admin</title>
 </head>
 <body>
+    
+<h1>Daftar Buku</h1>
 
-    <h1>Daftar Mahasiswa</h1>
+<a href="tambah.php">Tambah data buku</a>
 
-    <table border="1" cellpadding="10" cellspacing="0">
-
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Aksi</th>
-                <th>Gambar</th>
-                <th>NRP</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Jurusan</th>
-            </tr>
-        </thead>
-
-        <?php $i = 1; ?>
-        <?php foreach( $mahasiswa as $row ) : ?>
-        <tbody>
-            <tr>
-                <td><?= $i; ?></td>
-                <td>
-                    <a href="#">ubah</a> |
-                    <a href="#">hapus</a>
-                </td>
-                <td><img src="img/<?= $row["gambar"]; ?>" width="50"></td>
-                <td><?= $row["nrp"]; ?></td>
-                <td><?= $row["nama"]; ?></td>
-                <td><?= $row["email"]; ?></td>
-                <td><?= $row["jurusan"]; ?></td>
-            </tr>
-        </tbody>
-        <?php $i++ ?>
-        <?php endforeach; ?>
-
-
-    </table>
-
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>No.</th>
+        <th>Aksi</th>
+        <th>Judul</th>
+        <th>Penulis</th>
+        <th>Penerbit</th>
+        <th>Tahun</th>
+        <th>Stok</th>
+        <th>Gambar</th>
+    </tr>
+    
+    <?php $i = 1; ?>
+    <?php  foreach( $tes as $row ) : ?>
+    <tr> 
+        <td><?= $i ?></td>
+        <td>
+            <a href="ubah.php?id=<?= $row["id"];?>">ubah</a> |
+            <a href="hapus.php?id=<?= $row["id"];?>" onclick="return confirm('Yakin?')">hapus</a>
+        </td>
+        <td><?= $row["judul"]; ?></td>
+        <td><?= $row["penulis"]; ?></td>
+        <td><?= $row["penerbit"]; ?></td>
+        <td><?= $row["tahun"]; ?></td>
+        <td><?= $row["stok"]; ?></td>
+        <td><img src="img/<?= $row["gambar"]; ?>" width="50"></td>
+    </tr>
+    <?php $i++; ?>
+    <?php endforeach; ?>
+</table>
 
 </body>
 </html>
